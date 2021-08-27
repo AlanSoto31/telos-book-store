@@ -29,9 +29,14 @@
     <div>
       <%= f.label :password %>
       <br />
-      <%= f.password_field :password, placeholder: "password" %>
+      <%= f.password_field :password, placeholder: "password" %><br />
     </div>
 
+    <div>
+       <%= f.label :password_confirmation %>
+       <br />
+       <%= f.password_field :password_confirmation, placeholder: "password confirmation" %><br />
+    </div>
     <br />
     <%= f.submit "Create" %>
 
