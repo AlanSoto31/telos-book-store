@@ -1,0 +1,39 @@
+<div>
+<% @user.errors.full_messages.each do |msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+  <h5>Register</h5>
+
+  <%= form_for @user, url: {action: "create"} do |f| %>
+    
+    <div>
+      <%= f.label :name %>
+      <br />
+      <%= f.text_field :name, placeholder: "name"%><br />
+    </div>
+
+    <div>
+      <%= f.label :email %>
+      <br />
+      <%= f.email_field :email, placeholder: "email"%><br />
+    </div>
+
+    <div>
+      <%= f.label :address %>
+      <br />
+      <%= f.text_field :address, placeholder: "address"%><br />
+    </div>
+      
+    <div>
+      <%= f.label :password %>
+      <br />
+      <%= f.password_field :password, placeholder: "password" %>
+    </div>
+
+    <br />
+    <%= f.submit "Create" %>
+
+  <% end %>
+</div>
