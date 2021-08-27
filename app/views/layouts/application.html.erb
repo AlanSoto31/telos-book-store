@@ -11,6 +11,18 @@
   </head>
 
   <body>
+    <nav>
+      <%if user_signed_in?%>
+        <%= link_to 'log_out', logout_path%>
+        <h1><%= "Welcome #{current_user.name}" %></h1>
+      <%else%>
+        <%= link_to 'log_in', login_path %>
+        <span>|</span>
+        <%= link_to 'sign_up', signup_path %>
+      <%end%>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
