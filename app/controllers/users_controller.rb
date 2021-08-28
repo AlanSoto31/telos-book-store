@@ -16,6 +16,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+  
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      @user.seller = true
+      redirect_to new_book_path, notice: 'User was successfully updated'
+    else
+      redirect_to edit_user_path
+      flash.now[:alert] = "Something went wrong"
+    end
+  end
+  
+
   private
 
   def user_params

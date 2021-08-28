@@ -1,0 +1,28 @@
+<div>
+  <% @user.errors.full_messages.each do |msg| %>
+    <div>
+      <%= msg %>
+    </div>
+  <% end %>
+  <h5>Update to Seller</h5>
+
+  <%= form_for @user, url: {action: "update"} do |f| %>
+
+    <div>
+      <%= f.label :phone %>
+      <br />
+      <%= f.text_field :phone, placeholder: "phone"%>
+    </div><br />
+
+    <div>
+      <%= f.label :password %>
+      <br />
+      <%= f.password_field :password, placeholder: "password" %><br />
+    </div>
+    
+    <%=f.hidden_field :seller, value: true %><br />
+
+    <%= f.submit "Update" %>
+
+  <% end %>
+</div>
