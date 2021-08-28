@@ -14,11 +14,17 @@ class ApplicationController < ActionController::Base
     redirect_to login_path, alert: 'You must be logged in' if current_user.nil?
   end
 
-  def user_must_be_seller
-    redirect_to login_path, alert: 'You must be logged in as seller' if current_user.nil?
-    if !current_user.nil? && current_user.seller == false
-      redirect_to edit_user_path(current_user.id), alert: 'You must update your account as a seller' 
-    end
+  def user_must_be_seller(ruta)
+    redirect_to login_path(ruta: ruta), alert: 'You must be logged in as seller' if current_user.nil?
+    return unless !current_user.nil? && current_user.seller == false && current_user.phone.empty?
+
+    redirect_to edit_user_path(current_user.id, ruta: ruta), alert: 'You must update your account as a seller'
   end
-  
+
+  def user_must_be_buyer(ruta)
+    redirect_to login_path(ruta: ruta), alert: 'You must be logged in as buyer' if current_user.nil?
+    return unless !current_user.nil? && current_user.seller == true && current_user.address.empty?
+
+    redirect_to edit_user_path(current_user.id, ruta: ruta), alert: 'You must register your address'
+  end
 end

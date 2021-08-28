@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'home#index'
   get 'signup', to: 'users#new'
   get 'login', to: 'session#new'
   post 'login', to: 'session#create'
@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :users, only:[:new, :create, :edit, :update]
   resources :books, only:[:new]
+  resources :buy, only:[:new]
   
 end

@@ -18,20 +18,19 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @ruta = params[:ruta]
   end
-  
 
   def update
     @user = current_user
     if @user.update(user_params)
-      @user.seller = true
-      redirect_to new_book_path, notice: 'User was successfully updated'
+      ruta = params[:ruta]
+      redirect_to ruta, notice: 'User was successfully updated'
     else
       redirect_to edit_user_path
-      flash.now[:alert] = "Something went wrong"
+      flash.now[:alert] = 'Something went wrong'
     end
   end
-  
 
   private
 
