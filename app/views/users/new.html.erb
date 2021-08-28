@@ -7,6 +7,18 @@
   <h5>Register</h5>
 
   <%= form_for @user, url: {action: "create"} do |f| %>
+
+    <div>
+      <div>
+        <%= f.label(:seller, "seller") %>
+        <%= f.radio_button(:seller, true) %>
+      </div>
+
+      <div>
+        <%= f.label(:seller, "buyer") %>
+        <%= f.radio_button(:seller, false) %>
+      </div><br />
+    </div>
     
     <div>
       <%= f.label :name %>
@@ -18,6 +30,12 @@
       <%= f.label :email %>
       <br />
       <%= f.email_field :email, placeholder: "email"%><br />
+    </div>
+
+    <div>
+      <%= f.label :phone %>
+      <br />
+      <%= f.text_field :phone, placeholder: "phone"%><br />
     </div>
 
     <div>
