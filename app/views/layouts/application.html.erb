@@ -28,11 +28,16 @@
 
       <div class="d-flex flex-column align-items-center">
         <h1>Books Store</h1>
-        <p><%= "Welcome #{current_user.name}" if user_signed_in?%></p>  
+        <p><%= "Welcome #{current_user.name}" if user_signed_in?%></p>
+        <%=link_to 'HOME', root_path%>  
       </div>
 
       <div>
         <%= link_to 'Sell', new_book_path%>
+        <%if user_signed_in?%>
+          <span>|</span>
+          <%= link_to 'Go to Cart', cart_path(current_cart.id)%>
+        <%end%>
       </div>
 
     </nav>

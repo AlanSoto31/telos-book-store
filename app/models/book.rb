@@ -4,6 +4,6 @@ class Book < ApplicationRecord
   has_many :carts, through: :cart_books
 
   def self.search(search)
-    Book.find_by(title: search) ? Book.where(title: search) : Book.all
+    Book.find_by(title: search) ? Book.where(title: search, available: true) : Book.all.where(available: true)
   end
 end

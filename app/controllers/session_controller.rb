@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+
   def new
     @ruta = params[:ruta]
   end
@@ -8,13 +9,7 @@ class SessionController < ApplicationController
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
       @ruta = params[:ruta]
-      if @ruta.nil?
-        (redirect_to root_path,
-                     notice: 'Logged in successfully')
-      else
-        (redirect_to @ruta,
-                     notice: 'Logged in successfully')
-      end
+      redirect_to @ruta, notice: 'Logged in successfully'
     else
       flash.now[:alert] = 'Invalid email or password'
       render :new
