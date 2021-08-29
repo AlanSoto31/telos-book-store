@@ -26,6 +26,7 @@
           <td class="px-4"><%= book.author %></td>
           <td class="px-4"><%= book.price %></td>
           <td class="px-4"><%= book.user.name %></td>
+          <td> <%= link_to "Add to cart", cart_books_path(book_id: book.id), method: :post %></td>
         </tr>
       <% end %>
     </tbody>
