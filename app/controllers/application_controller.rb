@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
 
   def current_cart
     cart = Cart.find_by(user_id: session[:user_id])
-    cart ? cart : Cart.create(user_id: session[:user_id])
+    cart || Cart.create(user_id: session[:user_id])
+  end
+
+  def update_availability_books
+    current_cart.books.update(available: true)
   end
 
   def current_user
@@ -33,5 +37,4 @@ class ApplicationController < ActionController::Base
 
     redirect_to edit_user_path(current_user.id, ruta: ruta), alert: 'You must register your address'
   end
-
 end

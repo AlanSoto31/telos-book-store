@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+  before_action :update_availability_books, only: [:destroy]
 
   def new
     @ruta = params[:ruta]
@@ -17,6 +18,7 @@ class SessionController < ApplicationController
   end
 
   def destroy
+    current_cart.destroy
     session[:user_id] = nil
     redirect_to root_path, notice: 'Logged out'
   end

@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   resources :books, only:[:index, :new]
   resources :buy, only:[:new]
   resources :carts, only:[:show, :destroy]
-  resources :cart_books, only:[:create]
+  resources :cart_books, only:[:create, :destroy]
   
 end

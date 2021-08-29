@@ -15,6 +15,7 @@
           <td class="px-4"><%=cart_book.book.title%></td>
           <td class="px-4"><%= number_to_currency(cart_book.book.price)%></td>
           <td class="px-4"><%=cart_book.qty%></td>
+          <td><%=link_to "Remove", cart_book_path(cart_book, book_id: cart_book.book.id), method: :delete, class: "px-4"%></td>
         </tr>
       <% end %>
     </tbody>

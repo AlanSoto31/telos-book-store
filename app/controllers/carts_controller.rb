@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :update_availability_books, only: [:destroy]
 
   def show
     @cart = Cart.find(params[:id])
@@ -13,5 +14,4 @@ class CartsController < ApplicationController
       redirect_to cart_path
     end
   end
-  
 end
