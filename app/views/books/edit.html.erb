@@ -1,0 +1,39 @@
+<div>
+    <% @book.errors.full_messages.each do |msg| %>
+    <div>
+        <%= msg %>
+    </div>
+    <% end %>
+
+  <h5>Update Book</h5>
+
+  <%= form_for @book, url: {action: "update"} do |f| %>
+    
+    <div>
+      <%= f.label :title %>
+      <br />
+      <%= f.text_field :title, placeholder: "title"%><br />
+    </div>
+
+    <div>
+      <%= f.label :description %>
+      <br />
+      <%= f.text_area :description, placeholder: "description"%><br />
+    </div>
+
+    <div>
+      <%= f.label :author %>
+      <br />
+      <%= f.text_field :author, placeholder: "author"%><br />
+    </div>
+
+    <div>
+      <%= f.label :price %>
+      <br />
+      <%= f.number_field :price, step: 0.01, placeholder: "$ 0.00"%><br />
+    </div><br />
+      
+    <%= f.submit "Update" %>
+
+  <% end %>
+</div>

@@ -26,7 +26,11 @@
           <td class="px-4"><%= book.author %></td>
           <td class="px-4"><%= number_to_currency(book.price) %></td>
           <td class="px-4"><%= book.user.name %></td>
-          <td> <%= link_to "Add to cart", cart_books_path(book_id: book.id), method: :post %></td>
+          <td class="px-4"> <%= link_to "Add to cart", cart_books_path(book_id: book.id), method: :post %></td>
+          <%if user_signed_in?%>
+            <td class="px-4"> <%= link_to "Edit", edit_book_path(book) if current_user.id == book.user_id%></td>
+            <td class="px-4"> <%= link_to "Delete", book, method: :delete, data: { confirm: 'Are you sure?' } if current_user.id == book.user_id%></td>
+          <%end%>
         </tr>
       <% end %>
     </tbody>
