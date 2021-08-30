@@ -5,9 +5,9 @@
     </div>
     <% end %>
 
-  <h5>New Book</h5>
+  <h5>Update Book</h5>
 
-  <%= form_for @book, url: {action: "create"} do |f| %>
+  <%= form_for @book, url: {action: "update"} do |f| %>
     
     <div>
       <%= f.label :title %>
@@ -32,11 +32,8 @@
       <br />
       <%= f.number_field :price, step: 0.01, placeholder: "$ 0.00"%><br />
     </div><br />
-
-    <%=f.hidden_field :available, value: true %>
-    <%=f.hidden_field :user_id, value: current_user.id %>
       
-    <%= f.submit "Create" %>
+    <%= f.submit "Update" %>
 
   <% end %>
 </div>

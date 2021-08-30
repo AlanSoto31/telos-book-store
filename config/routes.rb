@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'checkout', to: 'carts#checkout'
 
   resources :users, only:[:new, :create, :edit, :update]
-  resources :books, only:[:index, :new]
+  resources :books, only:[:index, :new, :create, :edit, :update, :destroy]
   resources :buy, only:[:new]
   resources :carts, only:[:show, :destroy]
   resources :cart_books, only:[:create, :destroy]
