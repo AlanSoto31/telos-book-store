@@ -13,6 +13,7 @@ class CartsController < ApplicationController
     check = user.balance - total
     if check.positive?
       user.update(balance: check)
+      cart.books.each {|book| Sale.create(book_id: book.id, user_id: book.user_id)}
       cart.destroy
       redirect_to root_path, notice: 'Thanks for your purchase'
     else
