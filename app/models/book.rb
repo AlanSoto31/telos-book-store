@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   has_many :sales, dependent: :delete_all
   has_many :users, through: :sales
 
-  validates :title, presence: true, length: { in: 2..30 }
+  validates :title, uniqueness: true, presence: true, length: { in: 2..30 }
   validates :description, presence: true, length: { in: 5..200 }
   validates :author, presence: true, length: { in: 2..30 }
   validates :price, presence: true, length: { in: 1..8 }
