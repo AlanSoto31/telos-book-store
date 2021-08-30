@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'login', to: 'session#new'
   post 'login', to: 'session#create'
   get 'logout', to: 'session#destroy'
+  post 'checkout', to: 'carts#checkout'
 
   resources :users, only:[:new, :create, :edit, :update]
   resources :books, only:[:index, :new]

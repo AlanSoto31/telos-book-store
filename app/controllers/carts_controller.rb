@@ -3,6 +3,22 @@ class CartsController < ApplicationController
 
   def show
     @cart = Cart.find(params[:id])
+    @total = Cart.total(current_cart)
+  end
+
+  def checkout
+    user = current_user
+    cart = current_cart
+    total = params[:total].to_i
+    check = user.balance - total
+    if check.positive?
+      user.update(balance: check)
+      cart.destroy
+      redirect_to root_path, notice: 'Thanks for your purchase'
+    else
+      redirect_to cart_path(cart)
+      flash[:alert] = 'Insufficient funds'
+    end
   end
 
   def destroy
@@ -10,7 +26,7 @@ class CartsController < ApplicationController
     if cart.destroy
       redirect_to root_path, notice: 'Cart was successfully deleted'
     else
-      flash.now[:alert] = 'Something went wrong'
+      flash[:alert] = 'Something went wrong'
       redirect_to cart_path
     end
   end
