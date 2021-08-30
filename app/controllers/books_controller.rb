@@ -11,9 +11,9 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to root_path, notice: "Book successfully created"
+      redirect_to root_path, notice: 'Book successfully created'
     else
-      flash.now[:alert] = "Something went wrong"
+      flash.now[:alert] = 'Something went wrong'
       render 'new'
     end
   end
@@ -24,14 +24,14 @@ class BooksController < ApplicationController
 
   def update
     @book = find_book
-      if @book.update(book_params)
-        redirect_to root_path, notice: "Book was successfully updated"
-      else
-        flash[:alert] = "Something went wrong"
-        render 'edit'
-      end
+    if @book.update(book_params)
+      redirect_to root_path, notice: 'Book was successfully updated'
+    else
+      flash[:alert] = 'Something went wrong'
+      render 'edit'
+    end
   end
-  
+
   def destroy
     @book = find_book
     if @book.destroy
@@ -50,5 +50,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :description, :author, :price, :user_id, :available)
   end
-  
 end
