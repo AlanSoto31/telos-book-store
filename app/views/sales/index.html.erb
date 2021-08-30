@@ -1,0 +1,24 @@
+<h1 class="text-center">Results</h1>
+<div class="px-5 mt-4">
+    <table>
+        <thead>
+            <tr>
+            <th class= "px-4">Title</th>
+            <th class= "px-4">Price</th>
+            <th colspan="3"> </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <%@sales.each do |book|%>
+            <tr>
+                <td class= "px-4"><%=book.title%></td>
+                <td class= "px-4"><%= number_to_currency(book.price)%></td>
+            </tr>
+            <% end %> 
+        </tbody>
+    </table>
+    <div class= "mt-5 px-4">
+        <p><strong class="mr-4">Total earnings: </strong><%=number_to_currency(@earnings)%></p>
+    </div>
+</div>
