@@ -17,7 +17,7 @@
             <td><%= number_to_currency(cart_book.book.price)%></td>
             <td><%=cart_book.qty%></td>
             <td><%=number_to_currency(cart_book.qty * cart_book.book.price)%></td>
-            <td><%=link_to "Remove", cart_book_path(cart_book, book_id: cart_book.book.id), method: :delete, class: "px-4"%></td>
+            <td><%=link_to "Remove", cart_book_path(cart_book, book_id: cart_book.book.id), method: :delete, remote: true, class: "px-4 deleteFromCart"%></td>
           </tr>
         <% end %> 
       </tbody>
@@ -25,7 +25,7 @@
 
     <div class="w-25">
       <div class="mt-5">
-          <strong>Total: </strong><%=number_to_currency(@total)%>
+          <strong>Total: </strong><div id="total"><%=number_to_currency(@total)%></div>
       </div>
 
       <div class="mt-3">
