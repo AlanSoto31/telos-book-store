@@ -3,7 +3,7 @@ class CartsController < ApplicationController
 
   def show
     @cart = Cart.find(params[:id])
-    @total = Cart.total(current_cart)
+    @total = current_total
   end
 
   def checkout

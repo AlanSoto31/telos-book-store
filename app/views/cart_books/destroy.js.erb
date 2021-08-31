@@ -1,0 +1,5 @@
+$('.deleteFromCart').bind('ajax:success', function() {
+    $(this).closest('tr').fadeOut();
+})
+
+$('#total').html("<%= j (number_to_currency(current_total))%>")

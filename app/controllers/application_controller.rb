@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_signed_in?
   helper_method :current_cart
+  helper_method :current_total
+
+  def current_total 
+    Cart.total(current_cart)
+  end
   
   def render_index_real_time
     books = Book.search(params[:search])

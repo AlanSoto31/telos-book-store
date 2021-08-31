@@ -18,8 +18,11 @@ class CartBooksController < ApplicationController
     c_book.update(available: true)
     cart_book = CartBook.find(params[:id])
     cart_book.destroy
+    respond_to do |format|
+      format.js
+    end
     render_index_real_time
-    redirect_to cart_path(current_cart)
+    #redirect_to cart_path(current_cart)
   end
 
   private
