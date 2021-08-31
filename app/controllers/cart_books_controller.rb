@@ -5,10 +5,12 @@ class CartBooksController < ApplicationController
     @current_cart = current_cart
     c_book = Book.find(params[:book_id])
     c_book.update(available: false)
-    render_index_real_time
     cart_book = CartBook.new(book_id: params[:book_id], cart_id: @current_cart.id)
     cart_book.save
-    redirect_to root_path
+    render_index_real_time
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy
