@@ -25,6 +25,7 @@ class CartsController < ApplicationController
   def destroy
     cart = Cart.find(params[:id])
     if cart.destroy
+      render_index_real_time
       redirect_to root_path, notice: 'Cart was successfully deleted'
     else
       flash[:alert] = 'Something went wrong'

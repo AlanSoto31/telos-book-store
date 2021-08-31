@@ -19,6 +19,7 @@ class SessionController < ApplicationController
 
   def destroy
     current_cart.destroy
+    render_index_real_time
     session[:user_id] = nil
     redirect_to root_path, notice: 'Logged out'
   end
