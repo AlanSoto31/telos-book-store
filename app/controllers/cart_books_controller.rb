@@ -22,7 +22,7 @@ class CartBooksController < ApplicationController
       format.js
     end
     render_index_real_time
-    #redirect_to cart_path(current_cart)
+    # redirect_to cart_path(current_cart)
   end
 
   private

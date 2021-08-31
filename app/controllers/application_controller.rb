@@ -4,16 +4,16 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart
   helper_method :current_total
 
-  def current_total 
+  def current_total
     Cart.total(current_cart)
   end
-  
+
   def render_index_real_time
     books = Book.search(params[:search])
-    ActionCable.server.broadcast "room_channel", BooksController.render(
+    ActionCable.server.broadcast 'room_channel', BooksController.render(
       partial: 'books',
       locals: { books: books }
-  )
+    )
   end
 
   def current_cart
