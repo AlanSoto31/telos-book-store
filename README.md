@@ -42,7 +42,7 @@ Online book store where buyers can search and buy from a collection of books off
 
 ## Built With
 
-- Ruby on Rail 6
+- Ruby on Rails 6
 - Bootstrap
 - Rspec
 - VS Code
@@ -64,7 +64,7 @@ Get a local copy, type on console...
 1. Go inside the project folder: `cd telos-book-store`.
 2. Install dependencies: `bundle install`.
 3. Migrate the database: `rails db:migrate`.
-4. Fill the tables: `rails db:sedd`.
+4. Fill the tables: `rails db:seed`.
 5. Start the application: `rails s`.
 6. Open `http://localhost:3000/` in the browser of your preference.
 7. Stop the application: `ctrl + c`
