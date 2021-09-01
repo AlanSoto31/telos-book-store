@@ -10,7 +10,8 @@ class CartsController < ApplicationController
     user = current_user
     cart = current_cart
     total = current_total
-    return if total == 0
+    return if total.zero?
+
     check = user.balance - total
     if check.positive?
       user.update(balance: check)
