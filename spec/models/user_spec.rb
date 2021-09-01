@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { User.new(name: 'alan', email: 'alan@alan', address: 'acambaro', password: '123456') }
+  subject { User.new(name: 'Alan', email: 'soto.alan@hotmail.com', address: 'acambaro', password: '123456') }
 
   describe 'validations' do
     it 'Name must be present' do
@@ -25,7 +25,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'Email must be unique' do
-      User.create(name: 'alan', email: 'alan@alan', address: 'acambaro', password: '123456')
+      User.create(name: 'alan', email: 'soto.alan@hotmail.com', address: 'acambaro', password: '123456')
       expect(subject).to_not be_valid
       subject.email = 'hana@hana'
       expect(subject).to be_valid
