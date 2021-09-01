@@ -9,7 +9,8 @@ class CartsController < ApplicationController
   def checkout
     user = current_user
     cart = current_cart
-    total = params[:total].to_i
+    total = current_total
+    return if total == 0
     check = user.balance - total
     if check.positive?
       user.update(balance: check)
