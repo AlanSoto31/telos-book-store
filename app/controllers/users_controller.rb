@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -6,29 +7,29 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if user_params[:seller] == 'true' && user_params[:phone].empty?
-      flash.now[:alert] = 'Phone is required to seller'
-      render :new
+      flash[:alert] = 'Phone is required as a seller'
+      redirect_to signup_path
     elsif user_params[:seller] == 'false' && user_params[:address].empty?
-      flash.now[:alert] = 'Address is required to seller'
-      render :new
+      flash[:alert] = 'Address is required as a buyer'
+      redirect_to signup_path
     else
       save_user
     end
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
     @ruta = params[:ruta]
   end
-
+  
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     if @user.update(user_params)
       ruta = params[:ruta]
       redirect_to ruta, notice: 'User was successfully updated'
     else
       redirect_to edit_user_path
-      flash.now[:alert] = 'Something went wrong'
+      flash[:alert] = 'Something went wrong'
     end
   end
 
@@ -46,4 +47,5 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
 end
