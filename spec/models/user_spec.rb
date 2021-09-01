@@ -1,20 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { User.new(name: 'alan', email: 'alan@alan', address: 'acambaro', password: '123456') } 
-  
+  subject { User.new(name: 'alan', email: 'alan@alan', address: 'acambaro', password: '123456') }
+
   describe 'validations' do
     it 'Name must be present' do
       expect(subject).to be_valid
-      subject.name = nil 
+      subject.name = nil
       expect(subject).to_not be_valid
     end
 
     it 'Name must contain between 2 and 15 characters' do
       expect(subject).to be_valid
-      subject.name = 'a' 
+      subject.name = 'a'
       expect(subject).to_not be_valid
-      subject.name = 'aaaaaaaaaaaaaaaa' 
+      subject.name = 'aaaaaaaaaaaaaaaa'
       expect(subject).to_not be_valid
     end
 
@@ -31,5 +31,4 @@ RSpec.describe User, type: :model do
       expect(subject).to be_valid
     end
   end
-
 end
