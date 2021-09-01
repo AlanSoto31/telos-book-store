@@ -12,14 +12,14 @@
       <div>
           <%= f.label :address %>
           <br />
-          <%= f.text_field :address, placeholder: "address"%>
+          <%= f.text_field :address, placeholder: "address", required: true %>
       </div><br />
 
     <%else%>
       <div>
         <%= f.label :phone %>
         <br />
-        <%= f.text_field :phone, placeholder: "phone"%>
+        <%= f.text_field :phone, placeholder: "phone", required: true %>
       </div><br />
       <%=f.hidden_field :seller, value: true %><br />
     <%end%>
@@ -27,7 +27,7 @@
     <div>
       <%= f.label :password %>
       <br />
-      <%= f.password_field :password, placeholder: "password" %><br />
+      <%= f.password_field :password, placeholder: "password", required: true%><br />
     </div>
     
     <%= hidden_field_tag :ruta, @ruta %>
