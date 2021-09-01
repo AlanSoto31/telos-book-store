@@ -1,8 +1,8 @@
 class SalesController < ApplicationController
   def index
     @sales = current_user.books
-    @app_revenue = 1
-    @earnings = Sale.earnings(@sales)
-    @net_earnings = @earnings - @app_revenue
+    app_revenue = 1
+    @results = Sale.earnings(@sales, app_revenue)
+    @net_earnings = (@results[:earnings]).positive? ? @results[:earnings] - @results[:app_fee] : @earnings[:earnings]
   end
 end

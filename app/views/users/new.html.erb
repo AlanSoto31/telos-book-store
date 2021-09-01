@@ -6,17 +6,19 @@
 <% end %>
   <h5>Register</h5>
 
+<%= javascript_pack_tag 'toggle_field' %>
+
   <%= form_for @user, url: {action: "create"} do |f| %>
 
     <div>
       <div>
         <%= f.label(:seller, "seller") %>
-        <%= f.radio_button(:seller, true) %>
+        <%= f.radio_button :seller, true, id: "radio-seller"%>
       </div>
 
       <div>
         <%= f.label(:seller, "buyer") %>
-        <%= f.radio_button(:seller, false) %>
+        <%= f.radio_button :seller, false, id: "radio-buyer"%>
       </div><br />
     </div>
     
@@ -32,13 +34,13 @@
       <%= f.email_field :email, placeholder: "email"%><br />
     </div>
 
-    <div>
+    <div id="phone-container" class="phone">
       <%= f.label :phone %>
       <br />
       <%= f.text_field :phone, placeholder: "phone"%><br />
     </div>
 
-    <div>
+    <div id="address-container">
       <%= f.label :address %>
       <br />
       <%= f.text_field :address, placeholder: "address"%><br />
